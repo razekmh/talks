@@ -1,0 +1,32 @@
+---
+project:
+  type: website
+
+format:
+  html:
+    theme: darkly
+  revealjs:
+    footer: "{{< meta title >}}: <https://razekmh.github.io/talks>"
+    hash-type: number
+    history: false
+    incremental: true
+    link-external-icon: true
+    link-external-newwindow: true
+    mermaid:
+      theme: dark
+    slide-number: true
+    theme: dark
+    transition: fade
+
+website:
+  # google-analytics: G-XXXXXXXXXX
+  favicon: /assets/images/favicon.ico
+  navbar:
+    tools:
+      - icon: house
+        href: https://razekmh.github.io
+        target: _blank
+      - icon: github
+        href: https://github.com/razekmh/talks
+        target: _blank
+  title: ""
