@@ -4,6 +4,7 @@ project:
 
 format:
   html:
+    callout-appearance: simple
     theme: darkly
   revealjs:
     footer: "{{< meta title >}}: <https://razekmh.github.io/talks>"
@@ -24,9 +25,9 @@ website:
   navbar:
     tools:
       - icon: house
-        href: https://razekmh.github.io
+        href: https://razekmh.dev
         target: _blank
       - icon: github
-        href: https://github.com/razekmh/talks
+        href: https://razekmh.dev/talks
         target: _blank
   title: ""
