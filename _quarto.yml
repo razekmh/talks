@@ -25,9 +25,9 @@ website:
   navbar:
     tools:
       - icon: house
-        href: https://razekmh.dev
+        href: https://razekmh.github.io
         target: _blank
       - icon: github
-        href: https://razekmh.dev/talks
+        href: https://github.com/razekmh/talks
         target: _blank
   title: ""
