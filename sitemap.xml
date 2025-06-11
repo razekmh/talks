@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://razekmh.github.io/talks/ox-hackathon-caal/index.html</loc>
-    <lastmod>2025-06-11T20:20:38.047Z</lastmod>
+    <lastmod>2025-06-11T20:23:01.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://razekmh.github.io/talks/2025-06-dev-ops-hour/index.html</loc>
+    <lastmod>2025-06-11T20:23:01.614Z</lastmod>
   </url>
   <url>
     <loc>https://razekmh.github.io/talks/index.html</loc>
-    <lastmod>2025-06-11T20:20:38.045Z</lastmod>
+    <lastmod>2025-06-11T20:23:01.614Z</lastmod>
   </url>
 </urlset>
