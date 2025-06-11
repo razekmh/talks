@@ -10,3 +10,4 @@ _site
 index-listing.json
 site_libs
 *.DS_Store
+*/tmp
