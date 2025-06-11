@@ -1,0 +1,21 @@
+---
+name: Linting
+
+on:
+    push:
+        branches:
+            - main
+            - renovate/**
+    pull_request:
+
+jobs:
+    linting:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: razekmh/.github/actions/linting@f9a730975922aae748356e721d27623cb4a0f480
+              with:
+                pre-commit-config: ./.pre-commit-config.yaml
+
+            - uses: razekmh/.github/actions/vale@321d76256e62e4775679c0946440b70606a04836
+              with:
+                    github-token: ${{ secrets.GITHUB_TOKEN }}
