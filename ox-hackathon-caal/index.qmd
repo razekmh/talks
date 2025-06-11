@@ -1,11 +1,22 @@
 ---
-title: "ox-hackathon-caal"
+author: Mahmoud Abdelrazek
+date: 2024-08-27
+title: "CAAL"
+subtitle: Oxford Arches Hackathon
 format: revealjs
 ---
 
-## Quarto
+## CAAL
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+Central Asian Archaeological Landscape Project
+![](figures/caal_logo.png){.logo}
+
+## Full text
+The CAAL data comes from the analysis of recent and historic satellite imagery, historic maps, archaeological and historical archives, and published reports. At present we have collated information on over 45,000 sites. Thanks to the amazing efforts of our Central Asian partners, working through the pandemic, we also have nearly 10 TB of cleaned archival data on UCL Research Data storage, currently comprising over a quarter of a million scanned files, in nearly 10,000 folders. Each folder is a document (notebook, monument passport, report, folder of photographs, films, etc). For an example of a monument passport and images, see the Great Kyz Kala.
+Our online platform uses Arches v5, an open-source inventory system developed by the Getty Conservation Institute, the World Monuments Fund, and Farallon Geographics. It has been customised by us for this project.
+The data available here covers site/monument information, the remote sensing analysis, historic maps, and the metadata for the digitised archival material. The archival data itself will either be available on the UCL Open Access repository, if the owners are content to make it freely available, or held securely in the UCL research data system, if they require copyright permission before making it accessible.
+We hope that the information in the CAAL database will be of wide interest, especially to researchers and heritage professionals, providing a significant tool for cultural heritage management and archaeological research. To see examples of the heritage management applications of the data, see the work in Tajikistan, Turkmenistan and Uzbekistan).
+The core of the database is Open Access and does not require registration. Much of the information, with a map resolution down to c. 1:320,000, is available to everyone. Certain data are of a sensitive nature and therefore only available to registered users. If you would like to gain more detailed access to the database, please contact us at caal@ucl.ac.uk, specifying what you need access to, the research purpose, and your academic affiliation (if any).
 
 ## Bullets
 
