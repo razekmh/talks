@@ -1,0 +1,7 @@
+---
+author: Mahmoud Abdelrazek
+date: 2025-06-12
+title: "Building databases with Ansible"
+subtitle: DevOps Hour
+format: revealjs
+---
