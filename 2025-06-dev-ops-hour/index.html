@@ -150,7 +150,7 @@ Mahmoud Abdelrazek
 <section class="slide level2">
 <h2>I need a course</h2>
 <ul>
-<li class="fragment">Accisiable to digital humanties</li>
+<li class="fragment">Accessible to digital humanities</li>
 <li class="fragment">About databases</li>
 <li class="fragment">Easy to setup</li>
 </ul>
@@ -171,13 +171,11 @@ Mahmoud Abdelrazek
 </section>
 <section class="slide level2">
 <h2>It was covid</h2>
-<div class="center">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://www.jeffgeerling.com/about"><img data-src="figures/jeff.jpg"></a></p>
+<p><a href="https://www.jeffgeerling.com/about"><img data-src="figures/jeff.jpg" style="width:30.0%"></a></p>
 <figcaption>Jeff Geerling</figcaption>
 </figure>
-</div>
 </div>
 <p>I started watching Jeff Geerling’s videos on <a href="https://www.youtube.com/@JeffGeerling">YouTube</a>.</p>
 </section>
@@ -198,10 +196,51 @@ Mahmoud Abdelrazek
 <p>SECTION THREE</p>
 </section>
 <section class="slide level2">
-<h2>Story</h2>
+<h2>Start with a story</h2>
 <ul>
 <li class="fragment">Enron Email dataset</li>
-<li class="fragment"></li>
+<li class="fragment">Different perspectives</li>
+<li class="fragment">Split the task</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Workflow</h2>
+
+<img data-src="figures/build.png" style="width:60.0%" class="r-stretch"></section>
+<section class="slide level2">
+<h2>Setup sequence</h2>
+<pre><code>01_install_docker.yml
+02_get_data.yml
+03_build_database.yml</code></pre>
+</section>
+<section class="slide level2">
+<h2>Utils</h2>
+<pre><code>04_rebuild_elastisearch.yml
+05_rebuild_neo4j.yml
+99_delete_processed_data.yml
+99_stop_containers.yml</code></pre>
+</section></section>
+<section>
+<section class="title-slide slide level1 center">
+<h1>Mistakes</h1>
+<p>SECTION FOUR</p>
+</section>
+<section class="slide level2">
+<h2>Testing</h2>
+<ul>
+<li class="fragment">I didn’t know about molecule</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Documentation</h2>
+<ul>
+<li class="fragment">I didn’t document the process</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Efficiency</h2>
+<ul>
+<li class="fragment">Python scripts are not great</li>
 </ul>
 
 
