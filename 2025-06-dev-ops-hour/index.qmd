@@ -9,11 +9,11 @@ format: revealjs
 # Problem
 SECTION ONE
 
-
 ## I need a course
-- Accisiable to digital humanties
+- Accessible to digital humanities
 - About databases
 - Easy to setup
+
 
 ## Resources
 - Database servers
@@ -25,9 +25,10 @@ SECTION ONE
 SECTION TWO
 
 ## It was covid
-::: {.center}
-[![Jeff Geerling](figures/jeff.jpg)](https://www.jeffgeerling.com/about){}
-:::
+
+
+[![Jeff Geerling](figures/jeff.jpg){width=30%}](https://www.jeffgeerling.com/about)
+
 I started watching Jeff Geerling's videos on [YouTube](https://www.youtube.com/@JeffGeerling).
 
 
@@ -40,6 +41,43 @@ I started watching Jeff Geerling's videos on [YouTube](https://www.youtube.com/@
 # Design
 SECTION THREE
 
-## Story
+
+## Start with a story
 - Enron Email dataset
--
+- Different perspectives
+- Split the task
+
+
+## Workflow
+
+![](figures/build.png){width=60%}
+
+
+## Setup sequence
+```
+01_install_docker.yml
+02_get_data.yml
+03_build_database.yml
+```
+
+## Utils
+
+```
+04_rebuild_elastisearch.yml
+05_rebuild_neo4j.yml
+99_delete_processed_data.yml
+99_stop_containers.yml
+```
+
+
+# Mistakes
+SECTION FOUR
+
+## Testing
+- I didn't know about molecule
+
+## Documentation
+- I didn't document the process
+
+## Efficiency
+- Python scripts are not great
