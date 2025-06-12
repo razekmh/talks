@@ -5,3 +5,35 @@ title: "Building databases with Ansible"
 subtitle: DevOps Hour
 format: revealjs
 ---
+
+# Problem
+SECTION ONE
+
+
+## I need a course
+- Accisiable to digital humanties
+- About databases
+- Easy to setup
+
+## Resources
+- Database servers
+- Python
+- Bash ?
+- Docker / Compose ?
+
+# Solution
+SECTION TWO
+
+## It was covid
+::: {.center}
+[![Jeff Geerling](figures/jeff.jpg)](https://www.jeffgeerling.com/about){}
+:::
+
+## Ansible
+- Open source
+- Easy to use
+
+# Design
+SECTION THREE
+
+##
