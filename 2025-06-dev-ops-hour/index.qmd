@@ -28,12 +28,18 @@ SECTION TWO
 ::: {.center}
 [![Jeff Geerling](figures/jeff.jpg)](https://www.jeffgeerling.com/about){}
 :::
+I started watching Jeff Geerling's videos on [YouTube](https://www.youtube.com/@JeffGeerling).
+
 
 ## Ansible
 - Open source
 - Easy to use
+- Taught by Jeff Geerling
+    - [Ansible for DevOps](https://www.ansiblefordevops.com/)
 
 # Design
 SECTION THREE
 
-##
+## Story
+- Enron Email dataset
+-
