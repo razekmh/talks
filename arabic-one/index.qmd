@@ -1,7 +1,7 @@
 ---
 author: محمود عبد الرازق
 date: 2025-06-25
-title: "تجربة اللغة العربية في Quarto"
+title: "تجربة بناء عرض باستخدام Quarto باللغة العربية"
 subtitle: "التطبيق العملي"
 format:
     revealjs:
