@@ -45,12 +45,83 @@ digraph D {
 ```
 
 
-# Solution
+# Solution ?
 
 # Enter RAMSES
 ![](figures/ramses-logo.png){fig-align="center"}
 
-# RAMSES
+# RAMSES {auto-animate=true data-menu-title="RAMSES (i)"}
+
 ```R
 compute_DDDs(ATC_code, ATC_administration, dose, unit, silent = FALSE)
 ```
+# RAMSES {auto-animate=true data-menu-title="RAMSES (ii)"}
+
+```R
+ - ATC_code,
+ - ATC_administration,
+ - dose,
+ - unit
+```
+
+
+# ATC code
+```{dot}
+digraph G {
+    rankdir=BT;
+    "RxNorm: Clinical Drug" -> "RxNorm: Ingredient";
+    "RxNorm: Ingredient" -> "ATC 5th";
+    "ATC 5th" -> "ATC 4th";
+    "ATC 4th" -> "ATC 3rd";
+    "ATC 3rd" -> "ATC 2nd";
+    "ATC 2nd" -> "ATC 1st";
+}
+```
+
+
+
+# ATC code
+```{dot}
+digraph G {
+    rankdir=BT;
+    label="RxNorm to ATC";
+    "OMOP809928" -> "L01BE01"; # actually B A
+    "OMOP809928" -> "L04AX03";
+    "OMOP2603855" -> "L01BE01"; # actually B A
+    "OMOP2603855" -> "L04AX03";
+}
+```
+
+
+
+
+# Dose
+- Haloperidol 0.5mg
+- Haloperidol 1mg/ml
+
+# Dose {auto-animate=true data-menu-title="Dose (ii)"}
+
+```R
+amount_value
+amount_unit_concept_id
+```
+
+# Dose {auto-animate=true data-menu-title="Dose (iii)"}
+
+```R
+amount_value
+amount_unit_concept_id
+numerator_value
+numerator_unit_concept_id
+denominator_value
+denominator_unit_concept_id
+```
+
+# drugsatc
+- DuckDB
+- R package
+- ATC to DDD mapping
+- DDD calculation
+
+# drugsatc
+https://github.com/SAFEHR-data/drugsatc
