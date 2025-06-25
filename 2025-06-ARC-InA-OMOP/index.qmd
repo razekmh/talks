@@ -3,17 +3,54 @@ author: Mahmoud Abdelrazek & Angharad Green
 date: 2025-06-25
 title: "From OMOP to DDD"
 subtitle: ARC I&A June 2025
-format: revealjs
+format:
+    revealjs:
+        slide-number: true
 ---
+
+# Terms
 
 # OMOP
 
+![](figures/ohdsi.png){width=10%, fig-align="center"}
 
+The Observational Medical Outcomes Partnership  is a public-private partnership that aims to improve the quality of observational research. OMOP provides a <span style="color:lightgreen;font-weight:bold">standardized data model </span>and common data elements to facilitate the sharing and analysis of healthcare data across different organizations.
 
-The Observational Medical Outcomes Partnership (OMOP) is a public-private partnership that aims to improve the quality of observational research. OMOP provides a standardized data model and common data elements to facilitate the sharing and analysis of healthcare data across different organizations.
+# OMOP
 
-Key features of OMOP include:
+OMOP's <span style="color:lightgreen;font-weight:bold">Common Data Model</span> (CDM) is an open community data standard, designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.
+
+# OMOP
+![Common Data Model](figures/cdm54.png){fig-align="center"}
 
 # DDD
-Defined Daily Dose (DDD) is a unit of measurement used to quantify the amount of a drug that is typically prescribed for a specific condition. It is often used in pharmacology and healthcare research to standardize the measurement of drug consumption.
-DDD is defined by the World Health Organization (WHO) and is based on the average maintenance dose of a drug for its main indication in adults. It allows for comparisons of drug usage across different populations and settings.
+Defined Daily Dose is <span style="color:lightgreen;font-weight:bold">a unit of measurement</span> used to <span style="color:lightblue;font-weight:bold">quantify the amount of a drug that is typically prescribed for a specific condition</span>. It is often used in pharmacology and healthcare research to standardize the measurement of drug consumption.
+
+# DDD
+It is defined by the World Health Organization (WHO) and is based on the average maintenance dose of a drug for its main indication in adults. It allows for comparisons of drug usage across different populations and settings.
+
+# ATC
+Anatomical Therapeutic Chemical  is a <span style="color:lightgreen;font-weight:bold">classification system</span>, the active substances are divided into different groups according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties. Drugs are classified in groups at five different levels
+
+# ATC
+![](figures/atc_classification.jpg){fig-align="center"}
+
+# Problem
+
+```{dot}
+digraph D {
+  OMOP -> ATC;
+  ATC -> DDD;
+}
+```
+
+
+# Solution
+
+# Enter RAMSES
+![](figures/ramses-logo.png){fig-align="center"}
+
+# RAMSES
+```R
+compute_DDDs(ATC_code, ATC_administration, dose, unit, silent = FALSE)
+```
