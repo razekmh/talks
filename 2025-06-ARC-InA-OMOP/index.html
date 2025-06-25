@@ -30,6 +30,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1e628d9b9c2a788768ba05abcbced60e.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -143,14 +209,109 @@ Mahmoud Abdelrazek &amp; Angharad Green
   <p class="date">2025-06-25</p>
 </section>
 <section class="title-slide slide level1 center">
+<h1>Terms</h1>
+
+</section>
+
+<section class="title-slide slide level1 center">
 <h1>OMOP</h1>
-<p>The Observational Medical Outcomes Partnership (OMOP) is a public-private partnership that aims to improve the quality of observational research. OMOP provides a standardized data model and common data elements to facilitate the sharing and analysis of healthcare data across different organizations.</p>
-<p>Key features of OMOP include:</p>
+
+<img data-src="figures/ohdsi.png" class="quarto-figure quarto-figure-center r-stretch"><p>The Observational Medical Outcomes Partnership is a public-private partnership that aims to improve the quality of observational research. OMOP provides a <span style="color:lightgreen;font-weight:bold">standardized data model </span>and common data elements to facilitate the sharing and analysis of healthcare data across different organizations.</p>
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>OMOP</h1>
+<p>OMOP’s <span style="color:lightgreen;font-weight:bold">Common Data Model</span> (CDM) is an open community data standard, designed to standardize the structure and content of observational data and to enable efficient analyses that can produce reliable evidence.</p>
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>OMOP</h1>
+
+<img data-src="figures/cdm54.png" class="r-stretch quarto-figure-center"><p class="caption">Common Data Model</p></section>
+
+<section class="title-slide slide level1 center">
+<h1>DDD</h1>
+<p>Defined Daily Dose is <span style="color:lightgreen;font-weight:bold">a unit of measurement</span> used to <span style="color:lightblue;font-weight:bold">quantify the amount of a drug that is typically prescribed for a specific condition</span>. It is often used in pharmacology and healthcare research to standardize the measurement of drug consumption.</p>
 </section>
 
 <section class="title-slide slide level1 center">
 <h1>DDD</h1>
-<p>Defined Daily Dose (DDD) is a unit of measurement used to quantify the amount of a drug that is typically prescribed for a specific condition. It is often used in pharmacology and healthcare research to standardize the measurement of drug consumption. DDD is defined by the World Health Organization (WHO) and is based on the average maintenance dose of a drug for its main indication in adults. It allows for comparisons of drug usage across different populations and settings.</p>
+<p>It is defined by the World Health Organization (WHO) and is based on the average maintenance dose of a drug for its main indication in adults. It allows for comparisons of drug usage across different populations and settings.</p>
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>ATC</h1>
+<p>Anatomical Therapeutic Chemical is a <span style="color:lightgreen;font-weight:bold">classification system</span>, the active substances are divided into different groups according to the organ or system on which they act and their therapeutic, pharmacological and chemical properties. Drugs are classified in groups at five different levels</p>
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>ATC</h1>
+
+<img data-src="figures/atc_classification.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section class="title-slide slide level1 center">
+<h1>Problem</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 85.88 188.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>D</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 81.88,-184 81.88,4 -4,4"></polygon>
+<!-- OMOP -->
+<g id="node1" class="node">
+<title>OMOP</title>
+<ellipse fill="none" stroke="black" cx="38.94" cy="-162" rx="38.88" ry="18"></ellipse>
+<text text-anchor="middle" x="38.94" y="-157.8" font-family="Times,serif" font-size="14.00">OMOP</text>
+</g>
+<!-- ATC -->
+<g id="node2" class="node">
+<title>ATC</title>
+<ellipse fill="none" stroke="black" cx="38.94" cy="-90" rx="30.2" ry="18"></ellipse>
+<text text-anchor="middle" x="38.94" y="-85.8" font-family="Times,serif" font-size="14.00">ATC</text>
+</g>
+<!-- OMOP&#45;&gt;ATC -->
+<g id="edge1" class="edge">
+<title>OMOP-&gt;ATC</title>
+<path fill="none" stroke="black" d="M38.94,-143.7C38.94,-135.98 38.94,-126.71 38.94,-118.11"></path>
+<polygon fill="black" stroke="black" points="42.44,-118.1 38.94,-108.1 35.44,-118.1 42.44,-118.1"></polygon>
+</g>
+<!-- DDD -->
+<g id="node3" class="node">
+<title>DDD</title>
+<ellipse fill="none" stroke="black" cx="38.94" cy="-18" rx="31.92" ry="18"></ellipse>
+<text text-anchor="middle" x="38.94" y="-13.8" font-family="Times,serif" font-size="14.00">DDD</text>
+</g>
+<!-- ATC&#45;&gt;DDD -->
+<g id="edge2" class="edge">
+<title>ATC-&gt;DDD</title>
+<path fill="none" stroke="black" d="M38.94,-71.7C38.94,-63.98 38.94,-54.71 38.94,-46.11"></path>
+<polygon fill="black" stroke="black" points="42.44,-46.1 38.94,-36.1 35.44,-46.1 42.44,-46.1"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>Solution</h1>
+
+</section>
+
+<section class="title-slide slide level1 center">
+<h1>Enter RAMSES</h1>
+
+<img data-src="figures/ramses-logo.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section class="title-slide slide level1 center">
+<h1>RAMSES</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">compute_DDDs</span>(ATC_code, ATC_administration, dose, unit, <span class="at">silent =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
