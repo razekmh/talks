@@ -1,0 +1,125 @@
+---
+author: Mahmoud Abdelrazek
+date: 2025-11-28
+title: "Data Science Manager - Atana Elements"
+subtitle: "Introduction & Background"
+format:
+    revealjs:
+        slide-number: true
+---
+
+# Experience
+
+<span style="color:#4CAF50;font-size:1.1em">**Principal Research Data Consultant**</span> | UCL
+*Built data team • Line management • Strategic leadership*
+
+<span style="color:#4CAF50">**Lead Geological Consultant**</span> | Independent
+*10+ years • Multi-disciplinary teams • End-to-end exploration*
+
+<span style="color:#4CAF50">**Development Team Lead**</span> | IDA
+*Digital transformation • Process design • Analytical Team building*
+
+<span style="color:#4CAF50">**Exploration Geologist**</span> | Mica Star
+*Field experience • Mineral exploration • Digital mapping*
+
+# Education
+
+<span style="color:#4CAF50">**MSc Spatio-Temporal Analytics & Big Data Mining**</span> | UCL *(Distinction)*
+
+<span style="color:#4CAF50">**MSc Structural Geology, Remote Sensing & GIS**</span> | Cairo University
+*Thesis: Digital mineral potential mapping*
+
+<span style="color:#4CAF50">**BSc Geology**</span> | Damietta University *(2nd in class)*
+
+
+# Core [Technical]{style="color:#4CAF50; font-weight:bold"} Skills
+
+**Languages:** [Python]{style="color:#4CAF50; font-weight:bold"} (Pandas, Pydantic), [SQL]{style="color:#4CAF50; font-weight:bold"}, R, Bash
+
+**Automation:** Ansible, Docker, Git, [MLOps]{style="color:#4CAF50; font-weight:bold"}
+
+**Spatial:** [ArcGIS]{style="color:#4CAF50; font-weight:bold"}, QGIS, Remote Sensing
+
+**Cloud:** [AWS Certified]{style="color:#4CAF50; font-weight:bold"}, GCP, Azure
+
+**Data:** ETL Pipelines, Knowledge Graphs, PostgreSQL, MongoDB
+
+**AI:** [LLMs]{style="color:#4CAF50; font-weight:bold"}, [sklearn]{style="color:#4CAF50; font-weight:bold"}, [TensorFlow]{style="color:#4CAF50; font-weight:bold"}, [PyTorch]{style="color:#4CAF50; font-weight:bold"}
+
+# Strong Match [✓]{style="color:#4CAF50; font-weight:bold"}
+
+<span style="color:#4CAF50;font-size:1.3em">**Team Leadership**</span>
+Built and scaled teams from scratch • Line management • Strategic planning
+
+<span style="color:#4CAF50;font-size:1.3em">**Mineral Exploration**</span>
+10+ years end-to-end workflows • Field exploration • Digital mapping
+
+
+# Strong Match [✓]{style="color:#4CAF50; font-weight:bold"}
+
+<span style="color:#4CAF50;font-size:1.3em">**Subsurface & Geospatial**</span>
+Well logs • Geophysical data • Remote sensing • GIS
+
+<span style="color:#4CAF50;font-size:1.3em">**Data Infrastructure**</span>
+SQL • GraphDB • Cloud (AWS/GCP/Azure) • Scalable systems
+
+
+# Strong Match [✓]{style="color:#4CAF50; font-weight:bold"}
+
+<span style="color:#4CAF50;font-size:1.3em">**Python & Data Science**</span>
+Pipelines • ETL • Automation • ML models
+
+<span style="color:#4CAF50;font-size:1.3em">**Data Harmonization**</span>
+Multi-source data integration at scale
+
+# Areas to Develop 📚
+
+<span>**Critical Minerals**</span>
+[Specific characteristics & market dynamics]{style="color:#FF9800; font-weight:bold"}
+
+<span>**Production ML**</span>
+[MLOps]{style="color:#4CAF50; font-weight:bold"} • [Model monitoring]{style="color:#FF9800; font-weight:bold"} • [CI/CD pipelines]{style="color:#4CAF50; font-weight:bold"}
+
+# Key Projects: </br><span style="color:#2196F3">Digital Mineral Mapping</span>
+
+**MSc Thesis**
+Structural modelling • Mineral potential mapping • Geospatial analysis
+
+*ArcGIS • ENVI • Google Earth Engine*
+
+# Key Projects: </br><span style="color:#2196F3">Exploration Workflows</span>
+
+**Field Exploration**
+GPS surveying • Geodatabase management • End-to-end analysis
+
+*ArcGIS • ArcPy • QGIS*
+
+
+# Key Projects: </br><span style="color:#2196F3">Data Infrastructure</span>
+**Archaeological Data Integration**
+Data pipelines • Knowledge Graphs • Web Applications
+
+*Python • Django • PostgreSQL *
+
+# Key Projects: </br><span style="color:#2196F3">AL/ML</span>
+**Project management**
+Weather prediction model • Topic specific sentiment analysis • Sustainablity analysis via LLMs
+
+
+
+
+# Why Atana?
+
+<span style="color:#4CAF50;font-size:1.4em">**Unique Combination**</span>
+Geology expertise + Data science leadership
+
+<span style="color:#4CAF50;font-size:1.4em">**Proven Builder**</span>
+Teams from scratch • Strategic vision • Innovation
+
+<span style="color:#4CAF50;font-size:1.4em">**Exploration Experience**</span>
+End-to-end workflows • Field to analysis • Digital mapping
+
+# Questions?
+
+**Contact:**
+razekmh.dev • github.com/razekmh • linkedin.com/in/razekmh
