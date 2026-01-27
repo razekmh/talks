@@ -1,0 +1,334 @@
+---
+author: Mahmoud Abdelrazek
+date: 2026-01-27
+title: "DataJoint"
+subtitle: "Scientific Data Pipelines Framework"
+format:
+    revealjs:
+        slide-number: true
+---
+
+## The Problem: Scientific Data Pipelines
+
+```{dot}
+digraph Problem {
+    rankdir=LR;
+    node [shape=box, style=filled];
+
+    "Raw Data" [fillcolor=lightgreen]
+    "Process\nStep 1" [fillcolor=orange]
+    "Process\nStep 2" [fillcolor=orange]
+    "Process\nStep 3" [fillcolor=orange]
+    "Analysis" [fillcolor=purple]
+
+    "Raw Data" -> "Process\nStep 1" -> "Process\nStep 2" -> "Process\nStep 3" -> "Analysis"
+}
+```
+
+## The Problem: Challenges
+
+- **Manual dependency tracking**
+- **Hard to reproduce** results
+- **Lost provenance** information
+- **Difficult to scale** workflows
+- **Error-prone** manual steps
+
+
+## The Problem: Typical Workflow
+
+```{.python}
+# Step 1: Check if raw data exists
+if not os.path.exists('raw_data.h5'):
+    raise Error("Missing raw data")
+
+# Step 2: Check if step1 processed
+if not os.path.exists('step1_result.npy'):
+    process_step1()
+
+# Step 3: Check if step2 processed
+if not os.path.exists('step2_result.npy'):
+    process_step2()  # But did step1 run?
+
+# Step 4: Manual tracking
+# Which version? Which parameters?
+```
+
+## What is DataJoint?
+
+**Database schema = Executable workflow specification**
+<img src="https://docs.datajoint.com/images/pipeline.png" alt="DataJoint pipeline diagram" style="display: block; margin: 2em auto; max-width: 80%; border: 2px solid #888; border-radius: 8px;">
+<p style="text-align: center; font-size: 0.8em; color: #aaa; margin-top: -1.5em;">
+    Image source: <a href="https://docs.datajoint.com/images/pipeline.png" target="_blank">docs.datajoint.com</a>
+</p>
+
+
+## Relational Workflow Model
+
+- **Tables** = Workflow steps
+- **Foreign keys** = Dependencies
+- **Schema** = Executable specification
+
+## Table Tiers
+
+```{dot}
+digraph Tiers {
+    rankdir=LR;
+    node [shape=box, style=filled];
+
+    "Manual" [fillcolor=lightblue]
+    "#Lookup" [fillcolor=gold]
+    "_Imported" [fillcolor=lightgreen]
+    "__Computed" [fillcolor=orange]
+
+    "Manual" -> "#Lookup" -> "_Imported" -> "__Computed"
+}
+```
+
+## Table Structure
+```{.python}
+class Subject(dj.Manual):
+    definition = """
+    subject_id: int
+    ---
+    subject_name: varchar(100)
+    species: varchar(50)
+    """
+```
+
+## Manual Tables
+```{.python code-line-numbers="3"}
+class Session(dj.Manual):
+    definition = """
+    -> Subject          # Foreign key
+    session_id: int     # Primary key
+    ---
+    session_date: date  # Secondary attributes
+    notes: varchar(500)
+    """
+```
+
+## Lookup Tables
+```{.python code-line-numbers="7-10"}
+class #StimulusType(dj.Lookup):
+    definition = """
+    stimulus_type: varchar(20)
+    ---
+    description: varchar(200)
+    """
+    contents = [
+        ('visual', 'Visual stimulus'),
+        ('auditory', 'Auditory stimulus')
+    ]
+```
+
+## Imported Tables
+
+```{.python code-line-numbers="6|9-11"}
+class _RawData(dj.Imported):
+    definition = """
+    -> Session
+    ---
+    file_path: varchar(255)
+    data: longblob
+    """
+
+    def make(self, key):
+        data = load_file(key['file_path'])
+        self.insert1({**key, 'data': data})
+```
+
+## Computed Tables
+
+```{.python code-line-numbers="9-12"}
+class __Processed(dj.Computed):
+    definition = """
+    -> _RawData
+    ---
+    processed_data: longblob
+    computed_at: datetime
+    """
+
+    def make(self, key):
+        raw = (_RawData & key).fetch1()
+        processed = process(raw['data'])
+        self.insert1({**key, 'processed_data': processed})
+```
+
+## Master-Part Tables
+
+```{.python}
+class Session(dj.Manual):
+    definition = """
+    -> Subject
+    session_id: int
+    ---
+    session_date: date
+    """
+
+    class Trial(dj.Part):
+        definition = """
+        -> Session
+        trial_id: int
+        ---
+        trial_start: float
+        trial_end: float
+        """
+```
+
+## Complete Pipeline Example
+
+**Tables from code examples:**
+
+```{dot}
+digraph Tables {
+    rankdir=TB;
+    node [fixedsize=true, width=1.5, height=0.8];
+
+    StimulusType [label="#StimulusType\n[Lookup]", shape=ellipse, style=filled, fillcolor=gold]
+    Subject [label="Subject\n[Manual]", shape=box, style=filled, fillcolor=lightblue]
+    Session [label="Session\n[Manual]", shape=box, style=filled, fillcolor=lightblue]
+    SessionTrial [label="Session.Trial\n[Part]", shape=parallelogram, style="filled,dashed", fillcolor=lightblue, penwidth=2]
+    RawData [label="_RawData\n[Imported]", shape=box, style=filled, fillcolor=lightgreen]
+    Processed [label="__Processed\n[Computed]", shape=box, style=filled, fillcolor=orange]
+
+    // Relationships from code examples
+    Subject -> Session [label="-> Subject"]
+    Session -> SessionTrial [label="Part of", style=dashed]
+    Session -> RawData [label="-> Session"]
+    RawData -> Processed [label="-> _RawData"]
+}
+```
+
+## Foreign Keys & Dependencies
+
+```{dot}
+digraph Dependencies {
+    rankdir=LR;
+    node [shape=box];
+
+    "Subject" -> "Session"
+    "Session" -> "_RawData"
+    "_RawData" -> "__Processed"
+
+    edge [style=bold, color=blue];
+}
+```
+
+## Query Operations
+
+```{.python}
+# Restrict - filter rows matching conditions
+Session & {'subject_id': 1}  # Only sessions for subject 1
+
+# Join - combine tables
+Session * Trial
+
+# Project - select specific attributes
+Subject.proj('subject_name')
+```
+
+
+## Auto-Population
+
+```{.python}
+# Automatically compute missing data
+__Processed.populate()
+
+# Check progress
+__Processed.progress()
+```
+
+## Architecture
+
+```{dot}
+digraph Architecture {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    "Python\nSchema" [fillcolor=lightblue]
+    "DataJoint\nFramework" [fillcolor=orange]
+    "SQL Database" [fillcolor=lightgreen]
+    "Object Storage" [fillcolor=lightyellow]
+
+    "Python\nSchema" -> "DataJoint\nFramework"
+    "DataJoint\nFramework" -> "SQL Database"
+    "DataJoint\nFramework" -> "Object Storage"
+}
+```
+
+## Real-World Example: Ephys Pipeline
+
+**Element Array Electrophysiology** - Neuropixels analysis with Kilosort
+
+```{dot}
+digraph EphysPipeline {
+    rankdir=TB;
+    node [shape=box, style=filled];
+
+    "#Probe" [fillcolor=gold]
+    "Subject" [fillcolor=lightblue]
+    "EphysSession" [fillcolor=lightblue]
+    "EphysSession.Channel" [fillcolor=lightblue]
+    "_RawEphys" [fillcolor=lightgreen]
+    "__SpikeSorting" [fillcolor=orange]
+    "__QualityMetrics" [fillcolor=orange]
+
+    "#Probe" -> "EphysSession"
+    "Subject" -> "EphysSession"
+    "EphysSession" -> "EphysSession.Channel"
+    "EphysSession" -> "_RawEphys"
+    "_RawEphys" -> "__SpikeSorting"
+    "__SpikeSorting" -> "__QualityMetrics"
+}
+```
+
+## Ephys Pipeline Resources
+
+📦 **GitHub Repository:**
+https://github.com/datajoint/element-array-ephys
+
+📖 **Documentation:**
+https://docs.datajoint.com/elements/element-array-ephys/
+
+
+## Alternatives: Raw SQL
+
+```{.python}
+conn = mysql.connector.connect(...)
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM raw_data WHERE processed=0")
+raw_data = cursor.fetchall()
+
+for row in raw_data:
+    result = process(row['data'])
+    cursor.execute("INSERT INTO processed ...")
+
+```
+
+## Alternatives: SQLAlchemy
+
+```{.python}
+# ORM for data access
+class Session(Base):
+    __tablename__ = 'sessions'
+    id = Column(Integer, primary_key=True)
+    subject_id = Column(Integer, ForeignKey('subjects.id'))
+
+
+```
+## DataJoint Limitations
+
+**Limitations:**
+
+- Schema-driven (less flexible)
+- Learning curve for new concepts
+- Not designed for web apps
+- Domain-specific (scientific focus)
+
+## Resources
+
+📖 [Documentation](https://docs.datajoint.com/)
+🐍 [Python Package](https://github.com/datajoint/datajoint-python)
+🧠 [Elements](https://github.com/datajoint/elements)
+☁️ [Platform](https://datajoint.com/)
