@@ -1,8 +1,8 @@
 ---
 author: Mahmoud Abdelrazek
 date: 2026-01-27
-title: "DataJoint"
-subtitle: "Scientific Data Pipelines Framework"
+title: "DataJoint- Scientific Data Pipelines Framework"
+subtitle: "Data Stewards Roundtable"
 format:
     revealjs:
         slide-number: true
