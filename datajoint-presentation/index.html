@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="..//assets/images/favicon.ico" rel="icon">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
+
+  <meta name="author" content="Mahmoud Abdelrazek">
+  <meta name="dcterms.date" content="2026-01-27">
+  <title>DataJoint- Scientific Data Pipelines Framework</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-9d5f41a43766c5cdc1efcaf438d8d4c8.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section class="quarto-title-block center">
+  <h1 class="title">DataJoint- Scientific Data Pipelines Framework</h1>
+  <p class="subtitle">Data Stewards Roundtable</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Mahmoud Abdelrazek 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-01-27</p>
+</section>
+<section class="slide level2">
+<h2>The Problem: Scientific Data Pipelines</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 464.91 49.60" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 45.6)">
+<title>Problem</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-45.6 460.91,-45.6 460.91,4 -4,4"></polygon>
+<!-- Raw Data -->
+<g id="node1" class="node">
+<title>Raw Data</title>
+<polygon fill="lightgreen" stroke="black" points="71.39,-38.8 0.2,-38.8 0.2,-2.8 71.39,-2.8 71.39,-38.8"></polygon>
+<text text-anchor="middle" x="35.79" y="-16.6" font-family="Times,serif" font-size="14.00">Raw Data</text>
+</g>
+<!-- Process\nStep 1 -->
+<g id="node2" class="node">
+<title>Process\nStep 1</title>
+<polygon fill="orange" stroke="black" points="166.25,-41.4 107.7,-41.4 107.7,-0.2 166.25,-0.2 166.25,-41.4"></polygon>
+<text text-anchor="middle" x="136.98" y="-25" font-family="Times,serif" font-size="14.00">Process</text>
+<text text-anchor="middle" x="136.98" y="-8.2" font-family="Times,serif" font-size="14.00">Step 1</text>
+</g>
+<!-- Raw Data&#45;&gt;Process\nStep 1 -->
+<g id="edge1" class="edge">
+<title>Raw Data-&gt;Process\nStep 1</title>
+<path fill="none" stroke="black" d="M71.48,-20.8C79.9,-20.8 88.95,-20.8 97.54,-20.8"></path>
+<polygon fill="black" stroke="black" points="97.7,-24.3 107.7,-20.8 97.7,-17.3 97.7,-24.3"></polygon>
+</g>
+<!-- Process\nStep 2 -->
+<g id="node3" class="node">
+<title>Process\nStep 2</title>
+<polygon fill="orange" stroke="black" points="261.02,-41.4 202.48,-41.4 202.48,-0.2 261.02,-0.2 261.02,-41.4"></polygon>
+<text text-anchor="middle" x="231.75" y="-25" font-family="Times,serif" font-size="14.00">Process</text>
+<text text-anchor="middle" x="231.75" y="-8.2" font-family="Times,serif" font-size="14.00">Step 2</text>
+</g>
+<!-- Process\nStep 1&#45;&gt;Process\nStep 2 -->
+<g id="edge2" class="edge">
+<title>Process\nStep 1-&gt;Process\nStep 2</title>
+<path fill="none" stroke="black" d="M166.31,-20.8C174.42,-20.8 183.4,-20.8 192.02,-20.8"></path>
+<polygon fill="black" stroke="black" points="192.26,-24.3 202.26,-20.8 192.26,-17.3 192.26,-24.3"></polygon>
+</g>
+<!-- Process\nStep 3 -->
+<g id="node4" class="node">
+<title>Process\nStep 3</title>
+<polygon fill="orange" stroke="black" points="355.79,-41.4 297.25,-41.4 297.25,-0.2 355.79,-0.2 355.79,-41.4"></polygon>
+<text text-anchor="middle" x="326.52" y="-25" font-family="Times,serif" font-size="14.00">Process</text>
+<text text-anchor="middle" x="326.52" y="-8.2" font-family="Times,serif" font-size="14.00">Step 3</text>
+</g>
+<!-- Process\nStep 2&#45;&gt;Process\nStep 3 -->
+<g id="edge3" class="edge">
+<title>Process\nStep 2-&gt;Process\nStep 3</title>
+<path fill="none" stroke="black" d="M261.09,-20.8C269.19,-20.8 278.17,-20.8 286.79,-20.8"></path>
+<polygon fill="black" stroke="black" points="287.04,-24.3 297.04,-20.8 287.04,-17.3 287.04,-24.3"></polygon>
+</g>
+<!-- Analysis -->
+<g id="node5" class="node">
+<title>Analysis</title>
+<polygon fill="purple" stroke="black" points="456.91,-38.8 391.91,-38.8 391.91,-2.8 456.91,-2.8 456.91,-38.8"></polygon>
+<text text-anchor="middle" x="424.41" y="-16.6" font-family="Times,serif" font-size="14.00">Analysis</text>
+</g>
+<!-- Process\nStep 3&#45;&gt;Analysis -->
+<g id="edge4" class="edge">
+<title>Process\nStep 3-&gt;Analysis</title>
+<path fill="none" stroke="black" d="M356.03,-20.8C364.12,-20.8 373.11,-20.8 381.81,-20.8"></path>
+<polygon fill="black" stroke="black" points="381.82,-24.3 391.82,-20.8 381.82,-17.3 381.82,-24.3"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>The Problem: Challenges</h2>
+<ul>
+<li class="fragment"><strong>Manual dependency tracking</strong></li>
+<li class="fragment"><strong>Hard to reproduce</strong> results</li>
+<li class="fragment"><strong>Lost provenance</strong> information</li>
+<li class="fragment"><strong>Difficult to scale</strong> workflows</li>
+<li class="fragment"><strong>Error-prone</strong> manual steps</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>The Problem: Typical Workflow</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Step 1: Check if raw data exists</span></span>
+<span id="cb1-2"><a></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'raw_data.h5'</span>):</span>
+<span id="cb1-3"><a></a>    <span class="cf">raise</span> Error(<span class="st">"Missing raw data"</span>)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="co"># Step 2: Check if step1 processed</span></span>
+<span id="cb1-6"><a></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'step1_result.npy'</span>):</span>
+<span id="cb1-7"><a></a>    process_step1()</span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co"># Step 3: Check if step2 processed</span></span>
+<span id="cb1-10"><a></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'step2_result.npy'</span>):</span>
+<span id="cb1-11"><a></a>    process_step2()  <span class="co"># But did step1 run?</span></span>
+<span id="cb1-12"><a></a></span>
+<span id="cb1-13"><a></a><span class="co"># Step 4: Manual tracking</span></span>
+<span id="cb1-14"><a></a><span class="co"># Which version? Which parameters?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>What is DataJoint?</h2>
+<strong>Database schema = Executable workflow specification</strong> <img src="https://docs.datajoint.com/images/pipeline.png" alt="DataJoint pipeline diagram" style="display: block; margin: 2em auto; max-width: 80%; border: 2px solid #888; border-radius: 8px;">
+<p style="text-align: center; font-size: 0.8em; color: #aaa; margin-top: -1.5em;">
+Image source: <a href="https://docs.datajoint.com/images/pipeline.png" target="_blank">docs.datajoint.com</a>
+</p>
+</section>
+<section class="slide level2">
+<h2>Relational Workflow Model</h2>
+<ul>
+<li class="fragment"><strong>Tables</strong> = Workflow steps</li>
+<li class="fragment"><strong>Foreign keys</strong> = Dependencies</li>
+<li class="fragment"><strong>Schema</strong> = Executable specification</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Table Tiers</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 403.97 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>Tiers</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 399.97,-40 399.97,4 -4,4"></polygon>
+<!-- Manual -->
+<g id="node1" class="node">
+<title>Manual</title>
+<polygon fill="lightblue" stroke="black" points="58.65,-36 0.12,-36 0.12,0 58.65,0 58.65,-36"></polygon>
+<text text-anchor="middle" x="29.38" y="-13.8" font-family="Times,serif" font-size="14.00">Manual</text>
+</g>
+<!-- #Lookup -->
+<g id="node2" class="node">
+<title>#Lookup</title>
+<polygon fill="gold" stroke="black" points="161.09,-36 94.99,-36 94.99,0 161.09,0 161.09,-36"></polygon>
+<text text-anchor="middle" x="128.04" y="-13.8" font-family="Times,serif" font-size="14.00">#Lookup</text>
+</g>
+<!-- Manual&#45;&gt;#Lookup -->
+<g id="edge1" class="edge">
+<title>Manual-&gt;#Lookup</title>
+<path fill="none" stroke="black" d="M58.86,-18C66.95,-18 75.93,-18 84.65,-18"></path>
+<polygon fill="black" stroke="black" points="84.7,-21.5 94.7,-18 84.7,-14.5 84.7,-21.5"></polygon>
+</g>
+<!-- _Imported -->
+<g id="node3" class="node">
+<title>_Imported</title>
+<polygon fill="lightgreen" stroke="black" points="271.79,-36 197.16,-36 197.16,0 271.79,0 271.79,-36"></polygon>
+<text text-anchor="middle" x="234.48" y="-13.8" font-family="Times,serif" font-size="14.00">_Imported</text>
+</g>
+<!-- #Lookup&#45;&gt;_Imported -->
+<g id="edge2" class="edge">
+<title>#Lookup-&gt;_Imported</title>
+<path fill="none" stroke="black" d="M161.23,-18C169.41,-18 178.37,-18 187.11,-18"></path>
+<polygon fill="black" stroke="black" points="187.2,-21.5 197.2,-18 187.2,-14.5 187.2,-21.5"></polygon>
+</g>
+<!-- __Computed -->
+<g id="node4" class="node">
+<title>__Computed</title>
+<polygon fill="orange" stroke="black" points="396.13,-36 307.47,-36 307.47,0 396.13,0 396.13,-36"></polygon>
+<text text-anchor="middle" x="351.8" y="-13.8" font-family="Times,serif" font-size="14.00">__Computed</text>
+</g>
+<!-- _Imported&#45;&gt;__Computed -->
+<g id="edge3" class="edge">
+<title>_Imported-&gt;__Computed</title>
+<path fill="none" stroke="black" d="M271.65,-18C279.82,-18 288.65,-18 297.36,-18"></path>
+<polygon fill="black" stroke="black" points="297.48,-21.5 307.48,-18 297.48,-14.5 297.48,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Table Structure</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">class</span> Subject(dj.Manual):</span>
+<span id="cb2-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-3"><a></a><span class="st">    subject_id: int</span></span>
+<span id="cb2-4"><a></a><span class="st">    ---</span></span>
+<span id="cb2-5"><a></a><span class="st">    subject_name: varchar(100)</span></span>
+<span id="cb2-6"><a></a><span class="st">    species: varchar(50)</span></span>
+<span id="cb2-7"><a></a><span class="st">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Manual Tables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-code-line-numbers="3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">class</span> Session(dj.Manual):</span>
+<span id="cb3-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-3"><a></a><span class="st">    -&gt; Subject          # Foreign key</span></span>
+<span id="cb3-4"><a></a><span class="st">    session_id: int     # Primary key</span></span>
+<span id="cb3-5"><a></a><span class="st">    ---</span></span>
+<span id="cb3-6"><a></a><span class="st">    session_date: date  # Secondary attributes</span></span>
+<span id="cb3-7"><a></a><span class="st">    notes: varchar(500)</span></span>
+<span id="cb3-8"><a></a><span class="st">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Lookup Tables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="7-10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="kw">class</span> <span class="co">#StimulusType(dj.Lookup):</span></span>
+<span id="cb4-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb4-3"><a></a><span class="st">    stimulus_type: varchar(20)</span></span>
+<span id="cb4-4"><a></a><span class="st">    ---</span></span>
+<span id="cb4-5"><a></a><span class="st">    description: varchar(200)</span></span>
+<span id="cb4-6"><a></a><span class="st">    """</span></span>
+<span id="cb4-7"><a></a>    contents <span class="op">=</span> [</span>
+<span id="cb4-8"><a></a>        (<span class="st">'visual'</span>, <span class="st">'Visual stimulus'</span>),</span>
+<span id="cb4-9"><a></a>        (<span class="st">'auditory'</span>, <span class="st">'Auditory stimulus'</span>)</span>
+<span id="cb4-10"><a></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Imported Tables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-code-line-numbers="6|9-11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">class</span> _RawData(dj.Imported):</span>
+<span id="cb5-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb5-3"><a></a><span class="st">    -&gt; Session</span></span>
+<span id="cb5-4"><a></a><span class="st">    ---</span></span>
+<span id="cb5-5"><a></a><span class="st">    file_path: varchar(255)</span></span>
+<span id="cb5-6"><a></a><span class="st">    data: longblob</span></span>
+<span id="cb5-7"><a></a><span class="st">    """</span></span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a>    <span class="kw">def</span> make(<span class="va">self</span>, key):</span>
+<span id="cb5-10"><a></a>        data <span class="op">=</span> load_file(key[<span class="st">'file_path'</span>])</span>
+<span id="cb5-11"><a></a>        <span class="va">self</span>.insert1({<span class="op">**</span>key, <span class="st">'data'</span>: data})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Computed Tables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-code-line-numbers="9-12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">class</span> __Processed(dj.Computed):</span>
+<span id="cb6-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb6-3"><a></a><span class="st">    -&gt; _RawData</span></span>
+<span id="cb6-4"><a></a><span class="st">    ---</span></span>
+<span id="cb6-5"><a></a><span class="st">    processed_data: longblob</span></span>
+<span id="cb6-6"><a></a><span class="st">    computed_at: datetime</span></span>
+<span id="cb6-7"><a></a><span class="st">    """</span></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a>    <span class="kw">def</span> make(<span class="va">self</span>, key):</span>
+<span id="cb6-10"><a></a>        raw <span class="op">=</span> (_RawData <span class="op">&amp;</span> key).fetch1()</span>
+<span id="cb6-11"><a></a>        processed <span class="op">=</span> process(raw[<span class="st">'data'</span>])</span>
+<span id="cb6-12"><a></a>        <span class="va">self</span>.insert1({<span class="op">**</span>key, <span class="st">'processed_data'</span>: processed})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Master-Part Tables</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">class</span> Session(dj.Manual):</span>
+<span id="cb7-2"><a></a>    definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb7-3"><a></a><span class="st">    -&gt; Subject</span></span>
+<span id="cb7-4"><a></a><span class="st">    session_id: int</span></span>
+<span id="cb7-5"><a></a><span class="st">    ---</span></span>
+<span id="cb7-6"><a></a><span class="st">    session_date: date</span></span>
+<span id="cb7-7"><a></a><span class="st">    """</span></span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a>    <span class="kw">class</span> Trial(dj.Part):</span>
+<span id="cb7-10"><a></a>        definition <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb7-11"><a></a><span class="st">        -&gt; Session</span></span>
+<span id="cb7-12"><a></a><span class="st">        trial_id: int</span></span>
+<span id="cb7-13"><a></a><span class="st">        ---</span></span>
+<span id="cb7-14"><a></a><span class="st">        trial_start: float</span></span>
+<span id="cb7-15"><a></a><span class="st">        trial_end: float</span></span>
+<span id="cb7-16"><a></a><span class="st">        """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Complete Pipeline Example</h2>
+<p><strong>Tables from code examples:</strong></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 361.15 398.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 394.4)">
+<title>Tables</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-394.4 357.15,-394.4 357.15,4 -4,4"></polygon>
+<!-- StimulusType -->
+<g id="node1" class="node">
+<title>StimulusType</title>
+<ellipse fill="gold" stroke="black" cx="54" cy="-361.4" rx="54" ry="29"></ellipse>
+<text text-anchor="middle" x="54" y="-365.6" font-family="Times,serif" font-size="14.00">#StimulusType</text>
+<text text-anchor="middle" x="54" y="-348.8" font-family="Times,serif" font-size="14.00">[Lookup]</text>
+</g>
+<!-- Subject -->
+<g id="node2" class="node">
+<title>Subject</title>
+<polygon fill="lightblue" stroke="black" points="234,-390.4 126,-390.4 126,-332.4 234,-332.4 234,-390.4"></polygon>
+<text text-anchor="middle" x="180" y="-365.6" font-family="Times,serif" font-size="14.00">Subject</text>
+<text text-anchor="middle" x="180" y="-348.8" font-family="Times,serif" font-size="14.00">[Manual]</text>
+</g>
+<!-- Session -->
+<g id="node3" class="node">
+<title>Session</title>
+<polygon fill="lightblue" stroke="black" points="234,-279.6 126,-279.6 126,-221.6 234,-221.6 234,-279.6"></polygon>
+<text text-anchor="middle" x="180" y="-254.8" font-family="Times,serif" font-size="14.00">Session</text>
+<text text-anchor="middle" x="180" y="-238" font-family="Times,serif" font-size="14.00">[Manual]</text>
+</g>
+<!-- Subject&#45;&gt;Session -->
+<g id="edge1" class="edge">
+<title>Subject-&gt;Session</title>
+<path fill="none" stroke="black" d="M180,-332.38C180,-319.54 180,-304.1 180,-290.18"></path>
+<polygon fill="black" stroke="black" points="183.5,-289.9 180,-279.9 176.5,-289.9 183.5,-289.9"></polygon>
+<text text-anchor="middle" x="209.03" y="-301.8" font-family="Times,serif" font-size="14.00">-&gt; Subject</text>
+</g>
+<!-- SessionTrial -->
+<g id="node4" class="node">
+<title>SessionTrial</title>
+<polygon fill="lightblue" stroke="black" stroke-width="2" stroke-dasharray="5,2" points="205.97,-168.8 116.93,-168.8 94.03,-110.8 183.07,-110.8 205.97,-168.8"></polygon>
+<text text-anchor="middle" x="150" y="-144" font-family="Times,serif" font-size="14.00">Session.Trial</text>
+<text text-anchor="middle" x="150" y="-127.2" font-family="Times,serif" font-size="14.00">[Part]</text>
+</g>
+<!-- Session&#45;&gt;SessionTrial -->
+<g id="edge2" class="edge">
+<title>Session-&gt;SessionTrial</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M172.27,-221.58C168.7,-208.61 164.39,-193 160.53,-178.97"></path>
+<polygon fill="black" stroke="black" points="163.84,-177.81 157.8,-169.1 157.09,-179.67 163.84,-177.81"></polygon>
+<text text-anchor="middle" x="185.86" y="-191" font-family="Times,serif" font-size="14.00">Part of</text>
+</g>
+<!-- RawData -->
+<g id="node5" class="node">
+<title>RawData</title>
+<polygon fill="lightgreen" stroke="black" points="332,-168.8 224,-168.8 224,-110.8 332,-110.8 332,-168.8"></polygon>
+<text text-anchor="middle" x="278" y="-144" font-family="Times,serif" font-size="14.00">_RawData</text>
+<text text-anchor="middle" x="278" y="-127.2" font-family="Times,serif" font-size="14.00">[Imported]</text>
+</g>
+<!-- Session&#45;&gt;RawData -->
+<g id="edge3" class="edge">
+<title>Session-&gt;RawData</title>
+<path fill="none" stroke="black" d="M205.24,-221.58C217.6,-207.86 232.63,-191.17 245.81,-176.54"></path>
+<polygon fill="black" stroke="black" points="248.42,-178.87 252.51,-169.1 243.21,-174.19 248.42,-178.87"></polygon>
+<text text-anchor="middle" x="263.42" y="-191" font-family="Times,serif" font-size="14.00">-&gt; Session</text>
+</g>
+<!-- Processed -->
+<g id="node6" class="node">
+<title>Processed</title>
+<polygon fill="orange" stroke="black" points="332,-58 224,-58 224,0 332,0 332,-58"></polygon>
+<text text-anchor="middle" x="278" y="-33.2" font-family="Times,serif" font-size="14.00">__Processed</text>
+<text text-anchor="middle" x="278" y="-16.4" font-family="Times,serif" font-size="14.00">[Computed]</text>
+</g>
+<!-- RawData&#45;&gt;Processed -->
+<g id="edge4" class="edge">
+<title>RawData-&gt;Processed</title>
+<path fill="none" stroke="black" d="M278,-110.78C278,-97.94 278,-82.5 278,-68.58"></path>
+<polygon fill="black" stroke="black" points="281.5,-68.3 278,-58.3 274.5,-68.3 281.5,-68.3"></polygon>
+<text text-anchor="middle" x="315.57" y="-80.2" font-family="Times,serif" font-size="14.00">-&gt; _RawData</text>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Foreign Keys &amp; Dependencies</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 393.86 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>Dependencies</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 389.86,-40 389.86,4 -4,4"></polygon>
+<!-- Subject -->
+<g id="node1" class="node">
+<title>Subject</title>
+<polygon fill="none" stroke="black" points="57.99,-36 0,-36 0,0 57.99,0 57.99,-36"></polygon>
+<text text-anchor="middle" x="29" y="-13.8" font-family="Times,serif" font-size="14.00">Subject</text>
+</g>
+<!-- Session -->
+<g id="node2" class="node">
+<title>Session</title>
+<polygon fill="none" stroke="black" points="152.67,-36 94.1,-36 94.1,0 152.67,0 152.67,-36"></polygon>
+<text text-anchor="middle" x="123.39" y="-13.8" font-family="Times,serif" font-size="14.00">Session</text>
+</g>
+<!-- Subject&#45;&gt;Session -->
+<g id="edge1" class="edge">
+<title>Subject-&gt;Session</title>
+<path fill="none" stroke="black" d="M58.22,-18C66.29,-18 75.23,-18 83.81,-18"></path>
+<polygon fill="black" stroke="black" points="84.02,-21.5 94.02,-18 84.02,-14.5 84.02,-21.5"></polygon>
+</g>
+<!-- _RawData -->
+<g id="node3" class="node">
+<title>_RawData</title>
+<polygon fill="none" stroke="black" points="263.91,-36 188.73,-36 188.73,0 263.91,0 263.91,-36"></polygon>
+<text text-anchor="middle" x="226.32" y="-13.8" font-family="Times,serif" font-size="14.00">_RawData</text>
+</g>
+<!-- Session&#45;&gt;_RawData -->
+<g id="edge2" class="edge">
+<title>Session-&gt;_RawData</title>
+<path fill="none" stroke="black" d="M152.77,-18C160.73,-18 169.61,-18 178.35,-18"></path>
+<polygon fill="black" stroke="black" points="178.48,-21.5 188.48,-18 178.48,-14.5 178.48,-21.5"></polygon>
+</g>
+<!-- __Processed -->
+<g id="node4" class="node">
+<title>__Processed</title>
+<polygon fill="none" stroke="black" points="385.85,-36 299.88,-36 299.88,0 385.85,0 385.85,-36"></polygon>
+<text text-anchor="middle" x="342.86" y="-13.8" font-family="Times,serif" font-size="14.00">__Processed</text>
+</g>
+<!-- _RawData&#45;&gt;__Processed -->
+<g id="edge3" class="edge">
+<title>_RawData-&gt;__Processed</title>
+<path fill="none" stroke="black" d="M263.88,-18C272.07,-18 280.91,-18 289.59,-18"></path>
+<polygon fill="black" stroke="black" points="289.67,-21.5 299.67,-18 289.67,-14.5 289.67,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Query Operations</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Restrict - filter rows matching conditions</span></span>
+<span id="cb8-2"><a></a>Session <span class="op">&amp;</span> {<span class="st">'subject_id'</span>: <span class="dv">1</span>}  <span class="co"># Only sessions for subject 1</span></span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="co"># Join - combine tables</span></span>
+<span id="cb8-5"><a></a>Session <span class="op">*</span> Trial</span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a><span class="co"># Project - select specific attributes</span></span>
+<span id="cb8-8"><a></a>Subject.proj(<span class="st">'subject_name'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Auto-Population</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Automatically compute missing data</span></span>
+<span id="cb9-2"><a></a>__Processed.populate()</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="co"># Check progress</span></span>
+<span id="cb9-5"><a></a>__Processed.progress()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Architecture</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 222.42 199.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 195.2)">
+<title>Architecture</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-195.2 218.42,-195.2 218.42,4 -4,4"></polygon>
+<!-- Python\nSchema -->
+<g id="node1" class="node">
+<title>Python\nSchema</title>
+<polygon fill="lightblue" stroke="black" points="136.94,-191 76.31,-191 76.31,-149.8 136.94,-149.8 136.94,-191"></polygon>
+<text text-anchor="middle" x="106.63" y="-174.6" font-family="Times,serif" font-size="14.00">Python</text>
+<text text-anchor="middle" x="106.63" y="-157.8" font-family="Times,serif" font-size="14.00">Schema</text>
+</g>
+<!-- DataJoint\nFramework -->
+<g id="node2" class="node">
+<title>DataJoint\nFramework</title>
+<polygon fill="orange" stroke="black" points="146.67,-113.4 66.59,-113.4 66.59,-72.2 146.67,-72.2 146.67,-113.4"></polygon>
+<text text-anchor="middle" x="106.63" y="-97" font-family="Times,serif" font-size="14.00">DataJoint</text>
+<text text-anchor="middle" x="106.63" y="-80.2" font-family="Times,serif" font-size="14.00">Framework</text>
+</g>
+<!-- Python\nSchema&#45;&gt;DataJoint\nFramework -->
+<g id="edge1" class="edge">
+<title>Python\nSchema-&gt;DataJoint\nFramework</title>
+<path fill="none" stroke="black" d="M106.63,-149.54C106.63,-141.64 106.63,-132.38 106.63,-123.7"></path>
+<polygon fill="black" stroke="black" points="110.13,-123.53 106.63,-113.53 103.13,-123.53 110.13,-123.53"></polygon>
+</g>
+<!-- SQL Database -->
+<g id="node3" class="node">
+<title>SQL Database</title>
+<polygon fill="lightgreen" stroke="black" points="97.38,-36 -0.13,-36 -0.13,0 97.38,0 97.38,-36"></polygon>
+<text text-anchor="middle" x="48.63" y="-13.8" font-family="Times,serif" font-size="14.00">SQL Database</text>
+</g>
+<!-- DataJoint\nFramework&#45;&gt;SQL Database -->
+<g id="edge2" class="edge">
+<title>DataJoint\nFramework-&gt;SQL Database</title>
+<path fill="none" stroke="black" d="M90.78,-71.91C84,-63.4 76,-53.36 68.81,-44.33"></path>
+<polygon fill="black" stroke="black" points="71.45,-42.03 62.48,-36.39 65.98,-46.39 71.45,-42.03"></polygon>
+</g>
+<!-- Object Storage -->
+<g id="node4" class="node">
+<title>Object Storage</title>
+<polygon fill="lightyellow" stroke="black" points="214.21,-36 115.04,-36 115.04,0 214.21,0 214.21,-36"></polygon>
+<text text-anchor="middle" x="164.63" y="-13.8" font-family="Times,serif" font-size="14.00">Object Storage</text>
+</g>
+<!-- DataJoint\nFramework&#45;&gt;Object Storage -->
+<g id="edge3" class="edge">
+<title>DataJoint\nFramework-&gt;Object Storage</title>
+<path fill="none" stroke="black" d="M122.47,-71.91C129.25,-63.4 137.25,-53.36 144.45,-44.33"></path>
+<polygon fill="black" stroke="black" points="147.28,-46.39 150.77,-36.39 141.8,-42.03 147.28,-46.39"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Real-World Example: Ephys Pipeline</h2>
+<p><strong>Element Array Electrophysiology</strong> - Neuropixels analysis with Kilosort</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 269.35 332.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>EphysPipeline</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 265.35,-328 265.35,4 -4,4"></polygon>
+<!-- #Probe -->
+<g id="node1" class="node">
+<title>#Probe</title>
+<polygon fill="gold" stroke="black" points="128.63,-324 73.31,-324 73.31,-288 128.63,-288 128.63,-324"></polygon>
+<text text-anchor="middle" x="100.97" y="-301.8" font-family="Times,serif" font-size="14.00">#Probe</text>
+</g>
+<!-- EphysSession -->
+<g id="node3" class="node">
+<title>EphysSession</title>
+<polygon fill="lightblue" stroke="black" points="184.76,-252 91.18,-252 91.18,-216 184.76,-216 184.76,-252"></polygon>
+<text text-anchor="middle" x="137.97" y="-229.8" font-family="Times,serif" font-size="14.00">EphysSession</text>
+</g>
+<!-- #Probe&#45;&gt;EphysSession -->
+<g id="edge1" class="edge">
+<title>#Probe-&gt;EphysSession</title>
+<path fill="none" stroke="black" d="M110.12,-287.7C114.37,-279.64 119.53,-269.89 124.24,-260.98"></path>
+<polygon fill="black" stroke="black" points="127.35,-262.58 128.93,-252.1 121.16,-259.31 127.35,-262.58"></polygon>
+</g>
+<!-- Subject -->
+<g id="node2" class="node">
+<title>Subject</title>
+<polygon fill="lightblue" stroke="black" points="204.96,-324 146.98,-324 146.98,-288 204.96,-288 204.96,-324"></polygon>
+<text text-anchor="middle" x="175.97" y="-301.8" font-family="Times,serif" font-size="14.00">Subject</text>
+</g>
+<!-- Subject&#45;&gt;EphysSession -->
+<g id="edge2" class="edge">
+<title>Subject-&gt;EphysSession</title>
+<path fill="none" stroke="black" d="M166.58,-287.7C162.21,-279.64 156.91,-269.89 152.08,-260.98"></path>
+<polygon fill="black" stroke="black" points="155.1,-259.22 147.26,-252.1 148.95,-262.56 155.1,-259.22"></polygon>
+</g>
+<!-- EphysSession.Channel -->
+<g id="node4" class="node">
+<title>EphysSession.Channel</title>
+<polygon fill="lightblue" stroke="black" points="143.91,-180 0.03,-180 0.03,-144 143.91,-144 143.91,-180"></polygon>
+<text text-anchor="middle" x="71.97" y="-157.8" font-family="Times,serif" font-size="14.00">EphysSession.Channel</text>
+</g>
+<!-- EphysSession&#45;&gt;EphysSession.Channel -->
+<g id="edge3" class="edge">
+<title>EphysSession-&gt;EphysSession.Channel</title>
+<path fill="none" stroke="black" d="M121.66,-215.7C113.66,-207.22 103.9,-196.86 95.15,-187.58"></path>
+<polygon fill="black" stroke="black" points="97.5,-184.98 88.1,-180.1 92.41,-189.78 97.5,-184.98"></polygon>
+</g>
+<!-- _RawEphys -->
+<g id="node5" class="node">
+<title>_RawEphys</title>
+<polygon fill="lightgreen" stroke="black" points="245.63,-180 162.31,-180 162.31,-144 245.63,-144 245.63,-180"></polygon>
+<text text-anchor="middle" x="203.97" y="-157.8" font-family="Times,serif" font-size="14.00">_RawEphys</text>
+</g>
+<!-- EphysSession&#45;&gt;_RawEphys -->
+<g id="edge4" class="edge">
+<title>EphysSession-&gt;_RawEphys</title>
+<path fill="none" stroke="black" d="M154.29,-215.7C162.28,-207.22 172.04,-196.86 180.79,-187.58"></path>
+<polygon fill="black" stroke="black" points="183.53,-189.78 187.84,-180.1 178.44,-184.98 183.53,-189.78"></polygon>
+</g>
+<!-- __SpikeSorting -->
+<g id="node6" class="node">
+<title>__SpikeSorting</title>
+<polygon fill="orange" stroke="black" points="255.59,-108 152.35,-108 152.35,-72 255.59,-72 255.59,-108"></polygon>
+<text text-anchor="middle" x="203.97" y="-85.8" font-family="Times,serif" font-size="14.00">__SpikeSorting</text>
+</g>
+<!-- _RawEphys&#45;&gt;__SpikeSorting -->
+<g id="edge5" class="edge">
+<title>_RawEphys-&gt;__SpikeSorting</title>
+<path fill="none" stroke="black" d="M203.97,-143.7C203.97,-135.98 203.97,-126.71 203.97,-118.11"></path>
+<polygon fill="black" stroke="black" points="207.47,-118.1 203.97,-108.1 200.47,-118.1 207.47,-118.1"></polygon>
+</g>
+<!-- __QualityMetrics -->
+<g id="node7" class="node">
+<title>__QualityMetrics</title>
+<polygon fill="orange" stroke="black" points="261.23,-36 146.71,-36 146.71,0 261.23,0 261.23,-36"></polygon>
+<text text-anchor="middle" x="203.97" y="-13.8" font-family="Times,serif" font-size="14.00">__QualityMetrics</text>
+</g>
+<!-- __SpikeSorting&#45;&gt;__QualityMetrics -->
+<g id="edge6" class="edge">
+<title>__SpikeSorting-&gt;__QualityMetrics</title>
+<path fill="none" stroke="black" d="M203.97,-71.7C203.97,-63.98 203.97,-54.71 203.97,-46.11"></path>
+<polygon fill="black" stroke="black" points="207.47,-46.1 203.97,-36.1 200.47,-46.1 207.47,-46.1"></polygon>
+</g>
+</g>
+</svg>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ephys Pipeline Resources</h2>
+<p>📦 <strong>GitHub Repository:</strong> https://github.com/datajoint/element-array-ephys</p>
+<p>📖 <strong>Documentation:</strong> https://docs.datajoint.com/elements/element-array-ephys/</p>
+</section>
+<section class="slide level2">
+<h2>Alternatives: Raw SQL</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>conn <span class="op">=</span> mysql.connector.<span class="ex">connect</span>(...)</span>
+<span id="cb10-2"><a></a>cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>cursor.execute(<span class="st">"SELECT * FROM raw_data WHERE processed=0"</span>)</span>
+<span id="cb10-5"><a></a>raw_data <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="cf">for</span> row <span class="kw">in</span> raw_data:</span>
+<span id="cb10-8"><a></a>    result <span class="op">=</span> process(row[<span class="st">'data'</span>])</span>
+<span id="cb10-9"><a></a>    cursor.execute(<span class="st">"INSERT INTO processed ..."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>Alternatives: SQLAlchemy</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># ORM for data access</span></span>
+<span id="cb11-2"><a></a><span class="kw">class</span> Session(Base):</span>
+<span id="cb11-3"><a></a>    __tablename__ <span class="op">=</span> <span class="st">'sessions'</span></span>
+<span id="cb11-4"><a></a>    <span class="bu">id</span> <span class="op">=</span> Column(Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-5"><a></a>    subject_id <span class="op">=</span> Column(Integer, ForeignKey(<span class="st">'subjects.id'</span>))</span>
+<span id="cb11-6"><a></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section class="slide level2">
+<h2>DataJoint Limitations</h2>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li class="fragment">Schema-driven (less flexible)</li>
+<li class="fragment">Learning curve for new concepts</li>
+<li class="fragment">Not designed for web apps</li>
+<li class="fragment">Domain-specific (scientific focus)</li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>Resources</h2>
+<p>📖 <a href="https://docs.datajoint.com/">Documentation</a> 🐍 <a href="https://github.com/datajoint/datajoint-python">Python Package</a> 🧠 <a href="https://github.com/datajoint/elements">Elements</a> ☁️ <a href="https://datajoint.com/">Platform</a></p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>DataJoint- Scientific Data Pipelines Framework: <a href="https://razekmh.github.io/talks" class="uri">https://razekmh.github.io/talks</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/razekmh\.github\.io\/talks\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+                // target, if specified
+                link.setAttribute("target", "_blank");
+                if (link.getAttribute("rel") === null) {
+                  link.setAttribute("rel", "noopener");
+                }
+                // default icon
+                link.classList.add("external");
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
